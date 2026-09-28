@@ -1,0 +1,281 @@
+/* PLUMBING_V 1 — reset tecnico canonico (Toolkit/boilerplate/plumbing.css) */
+[hidden] { display: none !important; }
+img { max-width: 100%; height: auto; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
+
+/* ══════════ DOTT.SSA PAOLA PISANI — «I vostri compagni di vita sono in ottime mani.» ══════════
+   Via Santa Teresa 10/C. La pagina è la loro sala d'attesa (le foto di un cliente): la parete a due colori, bianca sopra e
+   azzurra sotto, col battiscopa di legno; le sedie di metallo verdi; le piante nei vasi di cotto; la lavagna magnetica con le
+   foto dei pazienti. La firma in apertura è quella lavagna (_pvt_lavagna.mjs); le recensioni sono biglietti su un'altra lavagna,
+   gli orari un foglio scritto a pennarello tenuto da due calamite. */
+:root {
+  --muro: #FAFAF7;
+  --zoccolo: #D3E6EE;
+  --zoccolo-riga: #B7D3DF;
+  --legno: #B5793F;
+  --legno-scuro: #8E5C2C;
+  --verde: #24513A;
+  --verde-2: #1B3F2D;
+  --cotto: #B4633C;
+  --inchiostro: #1E2A2E;
+  --grigio: #4F5B62;
+  --pennarello: #23323A;
+  --rosso: #B8322A;
+  --alluminio: #C9CED2;
+  --carta: #FFFFFF;
+  --f-titoli: 'Alike', Georgia, 'Times New Roman', serif;
+  --f-testo: 'Nokora', 'Segoe UI', Arial, sans-serif;
+  --f-pennarello: 'Neucha', 'Segoe Print', 'Comic Sans MS', cursive;
+  --gutter: 16px;
+  --testata-h: 64px;
+}
+@media (min-width: 760px) { :root { --gutter: 24px; } }
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; color: var(--inchiostro); font: 400 1.05rem/1.65 var(--f-testo); background: var(--muro); }
+a { color: var(--verde); }
+b, strong { font-weight: 700; }
+.salta { position: absolute; left: 12px; top: -60px; z-index: 100; padding: 10px 16px; background: #fff; color: var(--inchiostro); font-weight: 700; text-decoration: none; }
+.salta:focus { top: 10px; }
+.visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+section[id] { scroll-margin-top: calc(var(--testata-h) + 14px); }
+.intero { white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--verde); outline-offset: 2px; }
+/* finché i caratteri non arrivano il ripiego è più largo: una parola lunga va a capo invece di uscire (riserva-check, #233) */
+h1, h2, h3, .marchio__nome, .piede__nome { overflow-wrap: anywhere; }
+
+/* ── la testata: il muro bianco, il nome ── */
+.testata { position: sticky; top: 0; z-index: 50; background: var(--muro); border-bottom: 3px solid var(--zoccolo-riga); box-shadow: 0 6px 14px -10px rgba(30, 42, 46, .35); }
+.testata__dentro { display: flex; align-items: center; gap: 10px; max-width: 1180px; margin: 0 auto; padding: 8px var(--gutter); }
+.marchio { display: flex; flex-direction: column; min-width: 0; flex: 1 1 auto; color: var(--inchiostro); text-decoration: none; }
+.marchio__nome { font: 400 1.3rem/1.15 var(--f-titoli); }
+.marchio__sotto { display: none; font: 400 .8rem/1.3 var(--f-testo); color: var(--grigio); }
+.voci { display: none; }
+.testata__azioni { margin-left: auto; display: flex; align-items: center; gap: 6px; flex: none; }
+.lingue { display: flex; }
+.lingue button { min-width: 34px; min-height: 38px; padding: 0 5px; border: 1px solid #A9BCC4; background: transparent; color: var(--inchiostro); font: 700 .82rem var(--f-testo); cursor: pointer; }
+.lingue button + button { border-left: 0; }
+.lingue button.is-on { background: var(--verde); border-color: var(--verde); color: #fff; }
+.chiama { display: none; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 20px; background: var(--verde); color: #fff; font: 700 .98rem var(--f-testo); text-decoration: none; }
+.chiama:hover { background: var(--verde-2); }
+.burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px; width: 44px; height: 44px; padding: 10px; border: 1px solid #A9BCC4; border-radius: 4px; background: transparent; cursor: pointer; }
+.burger span { display: block; height: 2px; background: var(--inchiostro); transition: transform .2s, opacity .2s; }
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.menu-mobile { position: fixed; top: var(--testata-h); left: 0; right: 0; z-index: 49; max-height: calc(100vh - var(--testata-h)); overflow-y: auto; padding: 10px var(--gutter) 22px; background: var(--muro); border-bottom: 3px solid var(--zoccolo-riga); box-shadow: 0 10px 24px rgba(30, 42, 46, .25); }
+.menu-mobile a { display: block; padding: 12px 2px 10px; border-bottom: 1px solid #DCE6EA; color: var(--inchiostro); font: 400 1.3rem/1.3 var(--f-titoli); text-decoration: none; }
+.menu-mobile__chiama { display: flex !important; justify-content: center; gap: 8px; margin-top: 14px; border: 0 !important; border-radius: 24px; background: var(--verde); color: #fff !important; font-family: var(--f-testo) !important; font-weight: 700 !important; font-size: 1.1rem !important; }
+
+/* ── la parete: bianca sopra, lo zoccolo azzurro sotto, il battiscopa di legno ── */
+.parete { position: relative; background: linear-gradient(to bottom, var(--muro) 0, var(--muro) calc(100% - var(--alto-zoccolo, 34%)), var(--zoccolo-riga) calc(100% - var(--alto-zoccolo, 34%)), var(--zoccolo-riga) calc(100% - var(--alto-zoccolo, 34%) + 3px), var(--zoccolo) calc(100% - var(--alto-zoccolo, 34%) + 3px)); }
+.parete::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 9px; background: linear-gradient(to bottom, var(--legno), var(--legno-scuro)); }
+
+/* ── l'apertura ── */
+.apertura { display: grid; gap: 34px; max-width: none; padding: 40px max(var(--gutter), calc((100% - 1180px) / 2)) 54px; --alto-zoccolo: 30%; }
+.apertura__sopra { margin: 0; font: 400 1.18rem/1.3 var(--f-pennarello); color: var(--verde); }
+.apertura__titolo { margin: 10px 0 10px; font: 400 clamp(2.4rem, 1.6rem + 3.3vw, 4.2rem)/1.08 var(--f-titoli); text-wrap: balance; }
+.apertura__chi { margin: 0 0 20px; font-style: italic; color: var(--grigio); }
+.apertura__chi::before { content: '— '; }
+.apertura__frase { max-width: 32em; margin: 0 0 18px; font-size: 1.1rem; }
+.voto { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 10px; margin: 0; }
+.voto__n { font: 400 2rem/1 var(--f-titoli); }
+.voto__su { color: var(--grigio); font-size: .95rem; }
+/* le stelle: una maschera SVG ripetuta e un gradiente fino a --voto (niente testo tagliato, #232) */
+.stelle { --piena: #24513A; --vuota: #C9D6DB; display: inline-block; width: 5.5em; height: 1.05em; font-size: 1.05rem; vertical-align: -.1em; background: linear-gradient(90deg, var(--piena) calc(var(--voto, 1) * 100%), var(--vuota) 0); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 21'%3E%3Cpath d='M11 1l2.9 6.2 6.8.8-5 4.6 1.3 6.7L11 16l-6 3.3 1.3-6.7-5-4.6 6.8-.8z'/%3E%3C/svg%3E") 0 0 / 1.1em 1.05em repeat-x; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 21'%3E%3Cpath d='M11 1l2.9 6.2 6.8.8-5 4.6 1.3 6.7L11 16l-6 3.3 1.3-6.7-5-4.6 6.8-.8z'/%3E%3C/svg%3E") 0 0 / 1.1em 1.05em repeat-x; }
+.stato { display: inline-flex; align-items: center; gap: 8px; margin: 16px 0 0; font-weight: 700; color: var(--grigio); }
+.stato::before { content: ''; width: 10px; height: 10px; border-radius: 50%; background: currentColor; opacity: .45; flex: none; }
+.stato.is-aperto::before { background: var(--verde); opacity: 1; box-shadow: 0 0 0 3px rgba(36, 81, 58, .22); }
+.apertura__azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+.bottone { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 22px; border: 1.5px solid var(--verde); border-radius: 26px; background: var(--muro); color: var(--verde); font: 700 1.04rem/1.1 var(--f-testo); text-decoration: none; transition: background .15s, color .15s; }
+.bottone:hover { background: var(--verde); color: #fff; }
+.bottone--pieno { background: var(--verde); color: #fff; }
+.bottone--pieno:hover { background: var(--verde-2); border-color: var(--verde-2); }
+
+/* ── la firma: la lavagna dei pazienti ── */
+.apertura__lavagna { width: 100%; max-width: 640px; margin: 0 auto; }
+.lavagna { margin: 0; }
+.lavagna__cornice { position: relative; padding: 10px; border-radius: 6px; background: linear-gradient(135deg, #E9ECEE, #AEB4B9 40%, #E4E7E9 60%, #9FA6AB); box-shadow: 0 16px 26px -16px rgba(30, 42, 46, .55); }
+.lavagna__piano { position: relative; container-type: inline-size; overflow: hidden; border-radius: 2px; background: linear-gradient(115deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, .7) 42%, rgba(255, 255, 255, 0) 55%), linear-gradient(to bottom, #FFFFFF, #F1F3F4); box-shadow: inset 0 0 0 1px #D5DADD, inset 0 2px 6px rgba(0, 0, 0, .08); touch-action: auto; }
+.lavagna__titolo { position: absolute; left: 4%; top: 1.5%; margin: 0; font: 400 max(13px, 3.4cqw)/1.2 var(--f-pennarello); color: var(--rosso); transform: rotate(-1.5deg); pointer-events: none; }
+/* --scala-y: sui telefoni la lavagna è quadrata e le file si avvicinano (le y restano quelle della lavagna larga) */
+.paz { position: absolute; left: var(--x); top: calc(var(--y) * var(--scala-y, 1)); width: var(--w); transform: rotate(var(--r)); transform-origin: 50% 8%; z-index: 1; }
+.paz__foto { display: block; width: 100%; padding: 5%; border: 0; background: var(--carta); cursor: zoom-in; box-shadow: 0 1px 2px rgba(0, 0, 0, .18), 0 6px 12px -6px rgba(0, 0, 0, .4); }
+.paz__foto img { display: block; width: 100%; height: auto; pointer-events: none; -webkit-user-drag: none; user-select: none; }
+.paz__didascalia { display: block; margin-top: .6cqw; font: 400 max(11px, 2.2cqw)/1.15 var(--f-pennarello); color: var(--pennarello); text-align: center; pointer-events: none; }
+/* le calamite: un disco lucido nei colori della sala d'attesa */
+.calamita { position: absolute; top: calc(-1 * 1.6cqw); left: 50%; width: 4cqw; height: 4cqw; min-width: 11px; min-height: 11px; margin-left: calc(-1 * max(5.5px, 2cqw)); border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .75) 0 12%, rgba(255, 255, 255, 0) 32%), var(--c, #24513A); box-shadow: 0 2px 3px rgba(0, 0, 0, .35), inset 0 -2px 3px rgba(0, 0, 0, .25); pointer-events: none; }
+.calamita--verde { --c: #2F6B4A; }
+.calamita--cotto { --c: #B4633C; }
+.calamita--azzurro { --c: #5E97AE; }
+.calamita--ocra { --c: #D19A2E; }
+.calamita--sx { left: 14%; }
+.calamita--dx { left: 86%; }
+/* il padding in cqw: in % sarebbe della lavagna intera (il biglietto è posizionato), non del biglietto */
+.lavagna__biglietto { position: absolute; left: var(--x); top: var(--y); width: var(--w); padding: 2.6cqw 1.6cqw 1.3cqw; background: #FFF6CC; transform: rotate(var(--r)); box-shadow: 0 1px 2px rgba(0, 0, 0, .15), 0 6px 12px -6px rgba(0, 0, 0, .35); z-index: 2; }
+.lavagna__grazie { margin: 0 0 .5em; font: 400 max(11px, 2.15cqw)/1.25 var(--f-pennarello); color: var(--pennarello); }
+.lavagna__chi { margin: 0; font: 400 max(10px, 1.7cqw)/1.2 var(--f-pennarello); color: var(--grigio); }
+.lavagna__vassoio { position: relative; height: 12px; margin: 6px 6px 0; border-radius: 0 0 5px 5px; background: linear-gradient(to bottom, #9FA6AB, #D9DDE0); }
+.lavagna__pennarello { position: absolute; left: 12%; top: -5px; width: 20%; height: 9px; border-radius: 4px 8px 8px 4px; background: linear-gradient(90deg, #B8322A 0 22%, #F4F4F4 22% 80%, #B8322A 80%); box-shadow: 0 1px 2px rgba(0, 0, 0, .3); }
+.lavagna__nota { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; margin-top: 14px; font-size: .9rem; color: var(--grigio); text-align: center; }
+.lavagna__ordina { min-height: 40px; padding: 0 14px; border: 1.5px solid var(--verde); border-radius: 20px; background: var(--muro); color: var(--verde); font: 700 .92rem var(--f-testo); cursor: pointer; }
+.lavagna__ordina:hover { background: var(--verde); color: #fff; }
+/* col mouse le stampe si spostano; senza JS e sui telefoni no (il dito serve per scorrere la pagina) */
+.lavagna__piano { -webkit-user-select: none; user-select: none; }
+.js .paz, .js .paz .paz__foto { cursor: grab; }
+.paz.presa, .paz.presa .paz__foto { cursor: grabbing; }
+.paz.presa .paz__foto { box-shadow: 0 2px 3px rgba(0, 0, 0, .2), 0 16px 22px -10px rgba(0, 0, 0, .45); }
+.paz.scatta .calamita { animation: scatta .28s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes scatta { from { transform: scale(1.35); } to { transform: scale(1); } }
+.paz.torna { transition: left .45s cubic-bezier(.3, .8, .3, 1), top .45s cubic-bezier(.3, .8, .3, 1); }
+/* senza JS il bottone non serve, ma il suo posto resta: la lavagna è centrata nella colonna e, se la nota sotto fosse più
+   bassa, salirebbe di 8 px rispetto alla pagina con JS (e lo stato finale non sarebbe più quello senza JS) */
+.no-js .lavagna__ordina, .no-js .lavagna__trascina { visibility: hidden; }
+@media (hover: none) { .lavagna__trascina { display: none; } .js .paz, .js .paz .paz__foto { cursor: zoom-in; } }
+
+/* ── i capitoli ── */
+.capitolo { max-width: 1120px; margin: 0 auto; padding: 66px var(--gutter) 64px; }
+.capitolo--zoccolo { position: relative; max-width: none; padding-left: max(var(--gutter), calc((100% - 1120px) / 2)); padding-right: max(var(--gutter), calc((100% - 1120px) / 2)); background: var(--zoccolo); border-top: 3px solid var(--zoccolo-riga); }
+.capitolo--zoccolo::after { content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 9px; background: linear-gradient(to bottom, var(--legno), var(--legno-scuro)); }
+.etichetta { margin: 0; font: 400 1.35rem/1.2 var(--f-pennarello); color: var(--verde); text-align: center; }
+.capitolo__titolo { max-width: 22em; margin: 6px auto 20px; font: 400 clamp(2rem, 1.4rem + 2.2vw, 3rem)/1.12 var(--f-titoli); text-align: center; text-wrap: balance; }
+
+/* lo studio */
+.studio { display: grid; gap: 30px; max-width: 1000px; margin: 0 auto; align-items: start; }
+.studio__testo p { margin: 0 0 14px; font-size: 1.1rem; }
+.metodo { padding: 22px 22px 18px; border-radius: 4px; background: var(--carta); box-shadow: 0 0 0 1px #DCE6EA, 0 14px 26px -20px rgba(30, 42, 46, .6); }
+.metodo__intro { margin: 0 0 12px; font: 400 1.25rem/1.3 var(--f-pennarello); color: var(--rosso); }
+.metodo__lista { display: grid; gap: 14px; margin: 0; padding: 0; list-style: none; }
+.metodo__voce { position: relative; padding-left: 28px; }
+.metodo__voce::before { content: ''; position: absolute; left: 0; top: .35em; width: 16px; height: 16px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, rgba(255, 255, 255, .7) 0 14%, rgba(255, 255, 255, 0) 34%), var(--verde); }
+.metodo__voce:nth-child(2)::before { background-color: var(--cotto); }
+.metodo__voce:nth-child(3)::before { background-color: #5E97AE; }
+.metodo__voce:nth-child(4)::before { background-color: #D19A2E; }
+.metodo__nome { display: block; font: 400 1.25rem/1.25 var(--f-titoli); }
+.metodo__prova { color: var(--grigio); }
+
+/* la sala d'attesa: le foto incorniciate come i quadretti sul loro muro */
+.sala { display: grid; gap: 30px; max-width: 1000px; margin: 0 auto; align-items: start; }
+.sala__testo p { margin: 0 0 16px; font-size: 1.08rem; }
+figure { margin: 0; }
+.foto { display: block; width: 100%; padding: 10px; border: 7px solid #262626; background: #FFFFFF; cursor: zoom-in; box-shadow: 0 14px 24px -16px rgba(30, 42, 46, .7); }
+.foto img { display: block; width: 100%; height: auto; }
+.quadretto figcaption { margin-top: 10px; font: 400 1.1rem/1.3 var(--f-pennarello); color: var(--grigio); text-align: center; }
+.quadretto { margin-bottom: 18px; }
+.quadretto--alto { max-width: 460px; margin: 0 auto; }
+.sala__orario { padding: 12px 16px; border-left: 4px solid var(--verde); background: rgba(255, 255, 255, .7); }
+
+/* dicono: i biglietti su un'altra lavagna */
+.voto--centro { justify-content: center; margin: 0 0 26px; }
+.biglietti { display: grid; align-items: start; gap: 30px 20px; margin: 0; padding: 30px 18px 22px; list-style: none; border: 10px solid #C9CED2; border-radius: 6px; background: linear-gradient(115deg, rgba(255, 255, 255, 0) 30%, rgba(255, 255, 255, .6) 45%, rgba(255, 255, 255, 0) 60%), #FBFCFC; box-shadow: inset 0 0 0 1px #D5DADD, 0 16px 26px -18px rgba(30, 42, 46, .55); }
+.nota { position: relative; padding: 22px 18px 16px; background: var(--carta); transform: rotate(var(--r, 0deg)); box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 8px 14px -8px rgba(0, 0, 0, .3); }
+.nota .calamita { top: -9px; width: 20px; height: 20px; min-width: 0; min-height: 0; margin-left: -10px; }
+.nota:nth-child(3n+2) { background: #FFF6CC; }
+.nota__testo { margin: 0 0 10px; font: 400 1.08rem/1.5 var(--f-titoli); }
+.nota__chi { margin: 0; font-size: .86rem; color: var(--grigio); }
+.nota__chi b { display: block; font-size: 1rem; color: var(--inchiostro); }
+.nota--link { background: #E6F1F5; }
+.nota__pennarello { margin: 0 0 12px; font: 400 1.35rem/1.35 var(--f-pennarello); color: var(--pennarello); }
+.nota__vai { margin: 0; }
+.nota__vai a { font-weight: 700; }
+.nota__vai a::after { content: ' →'; }
+.dicono__nota { max-width: 44em; margin: 22px auto 0; font-size: .92rem; color: var(--grigio); text-align: center; }
+
+/* orari e dove: il foglio a pennarello */
+.orari { display: grid; gap: 30px; max-width: 1000px; margin: 0 auto; }
+.foglio { position: relative; max-width: 440px; margin: 10px 0 20px; padding: 26px 22px 18px; background: var(--carta); transform: rotate(-1deg); box-shadow: 0 1px 2px rgba(0, 0, 0, .14), 0 10px 18px -10px rgba(0, 0, 0, .35); }
+.foglio .calamita { top: -9px; width: 20px; height: 20px; min-width: 0; min-height: 0; margin-left: -10px; }
+.foglio .stato { margin-top: 0; }
+.settimana { width: 100%; margin: 8px 0 0; border-collapse: collapse; }
+.settimana th { padding: 5px 4px 3px; text-align: left; font: 400 1.3rem/1.3 var(--f-pennarello); color: var(--pennarello); }
+.settimana td { padding: 5px 4px 3px; text-align: right; font: 400 1.3rem/1.3 var(--f-pennarello); color: var(--pennarello); }
+.settimana tr { border-bottom: 1px dashed #C8D4D9; }
+.settimana tr.chiuso th, .settimana tr.chiuso td { color: var(--rosso); }
+.settimana tr.is-today { background: #EAF3F6; }
+.civico { padding: 10px 14px; border-left: 4px solid var(--cotto); background: rgba(255, 255, 255, .7); }
+.orari__azioni { margin: 16px 0 0; }
+.mappa { margin-top: 14px; padding: 8px; border: 7px solid #262626; background: #FFFFFF; }
+.mappa iframe { display: block; width: 100%; height: 320px; border: 0; }
+
+/* domande */
+.domande { max-width: 820px; margin: 0 auto; }
+.domande details { border-bottom: 1px solid #D5E2E7; }
+.domande summary { padding: 14px 4px 12px; font: 400 1.22rem/1.3 var(--f-titoli); cursor: pointer; }
+.domande details p { max-width: 46em; margin: 0 0 16px; padding: 0 4px; }
+
+/* ── la chiusura: il verde delle sedie ── */
+.piede { position: relative; background: var(--verde-2); color: #F2F6F4; }
+.piede::before { content: ''; position: absolute; left: 0; right: 0; top: 0; height: 9px; background: linear-gradient(to bottom, var(--legno), var(--legno-scuro)); }
+.piede__dentro { max-width: 900px; margin: 0 auto; padding: 46px var(--gutter) 96px; text-align: center; }
+.piede__nome { margin: 0; font: 400 clamp(2rem, 1.6rem + 1.8vw, 2.8rem)/1.1 var(--f-titoli); }
+.piede__sotto { margin: 6px 0 16px; color: #CFE0D7; }
+.piede__dove { margin: 0 0 16px; }
+.piede a { color: #FFFFFF; }
+.piede__cred { max-width: 54em; margin: 0 auto 10px; font-size: .84rem; color: #C7D8CF; }
+.piede__su { font-weight: 700; }
+
+/* ── reveal (plumbing) ── */
+.js .reveal { opacity: 0; }
+.js .reveal.in-view { opacity: 1; }
+html:not(.js) .reveal { opacity: 1; }
+.reduced-motion .reveal { opacity: 1 !important; }
+
+/* ── la barra e la lightbox ── */
+.action-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: grid; grid-template-columns: 1fr 1fr; background: var(--verde-2); transform: translateY(100%); transition: transform .25s; }
+.action-bar.is-visible { transform: translateY(0); }
+.action-bar a { display: flex; align-items: center; justify-content: center; min-height: 54px; color: #fff; font: 700 1.05rem var(--f-testo); text-decoration: none; }
+.action-bar a:first-child { background: var(--verde); }
+#lightbox { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 24px; background: rgba(20, 28, 30, .94); }
+#lightbox[hidden] { display: none !important; }
+#lightbox img { width: auto; max-width: min(1400px, 100%); max-height: 88vh; }
+#lightboxClose { position: absolute; top: 14px; right: 16px; width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, .6); border-radius: 50%; background: transparent; color: #fff; font-size: 32px; line-height: 1; cursor: pointer; }
+
+/* ── le larghezze ── */
+@media (max-width: 359px) {
+  .testata__dentro { gap: 6px; }
+  .marchio__nome { font-size: 1.12rem; }
+  .lingue button { min-width: 31px; }
+}
+/* sui telefoni le didascalie a pennarello sulla lavagna sarebbero troppo piccole (restano le descrizioni delle foto); la
+   lavagna è un poco più alta e il biglietto, largo, va sotto le foto */
+@media (max-width: 559px) {
+  .paz__didascalia { display: none; }
+  .lavagna .lavagna__piano { aspect-ratio: 1; --scala-y: .8; }
+  .lavagna .lavagna__biglietto { left: 24%; top: 70%; width: 70%; padding: 3.2cqw 3cqw 2cqw; }
+  .lavagna__grazie { margin-bottom: .3em; }
+}
+@media (min-width: 420px) {
+  .marchio__sotto { display: block; }
+}
+@media (min-width: 560px) {
+  .chiama { display: inline-flex; }
+}
+@media (min-width: 760px) {
+  .action-bar { display: none; }
+  .piede__dentro { padding-bottom: 46px; }
+  .studio { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 44px; }
+  .sala { grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); gap: 44px; }
+  .biglietti { grid-template-columns: 1fr 1fr; padding: 36px 30px 28px; }
+  .orari { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 42px; }
+}
+@media (min-width: 1040px) {
+  :root { --testata-h: 70px; }
+  .testata__dentro { gap: 16px; }
+  .marchio { flex: none; }
+  .marchio__nome { font-size: 1.45rem; }
+  .voci { display: flex; flex-wrap: wrap; gap: 4px 26px; margin-left: 34px; }
+  .voci a { padding: 4px 1px 2px; color: var(--inchiostro); font: 400 1.08rem var(--f-titoli); text-decoration: none; }
+  .voci a:hover, .voci a[aria-current="true"] { color: var(--verde); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+  .burger { display: none; }
+  .apertura { grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: 48px; padding-top: 50px; padding-bottom: 64px; }
+  .biglietti { grid-template-columns: repeat(3, 1fr); }
+}
+
+/*LAVAGNA*/
+/* generato da _pvt_lavagna.mjs: lo stato d'attesa della lavagna dei pazienti, solo dentro .lavagna */
+.lavagna__piano { aspect-ratio: 1.25; }
+.firma-attesa .lavagna .paz, .firma-attesa .lavagna .lavagna__biglietto { opacity: 0; }
+/*/LAVAGNA*/
