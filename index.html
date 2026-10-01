@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
 <script>(function(){var r=document.documentElement;r.classList.remove('no-js');
 /* la firma: finché main.js non parte la lavagna è vuota; se il codice non arriva, dopo 2,5 s va allo stato finale */
 try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add('firma-attesa');window.__attesaLavagna=setTimeout(function(){r.classList.remove('firma-attesa')},2500)}}catch(e){}})()</script>
@@ -20,15 +21,54 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
 <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Alike&amp;family=Neucha&amp;family=Nokora:wght@400;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css?v=1">
 <link rel="stylesheet" href="css/styles.css?v=1">
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
 <script src="js/main.js?v=1" defer></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"VeterinaryCare","name":"Pisani Dr. Paola — Ambulatorio veterinario","description":"L'ambulatorio veterinario della dottoressa Paola Pisani in Via Santa Teresa 10/C a Milano: visite per cani e gatti, orario continuato.","url":"https://rotenzark.github.io/veterinaria-pisani-santa-teresa/","image":"https://rotenzark.github.io/veterinaria-pisani-santa-teresa/img/og.jpg","telephone":"+39 02 8467102","address":{"@type":"PostalAddress","streetAddress":"Via Santa Teresa 10/C","postalCode":"20142","addressLocality":"Milano","addressRegion":"MI","addressCountry":"IT"},"geo":{"@type":"GeoCoordinates","latitude":45.42897,"longitude":9.17517},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"15:00"}],"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"100","bestRating":"5"}}
+{
+  "@context": "https://schema.org",
+  "@type": "VeterinaryCare",
+  "name": "Pisani Dr. Paola — Ambulatorio veterinario",
+  "description": "L'ambulatorio veterinario della dottoressa Paola Pisani in Via Santa Teresa 10/C a Milano: visite per cani e gatti, orario continuato.",
+  "url": "https://rotenzark.github.io/veterinaria-pisani-santa-teresa/",
+  "image": "https://rotenzark.github.io/veterinaria-pisani-santa-teresa/img/og.jpg",
+  "telephone": "+39 02 8467102",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Santa Teresa 10/C",
+    "postalCode": "20142",
+    "addressLocality": "Milano",
+    "addressRegion": "MI",
+    "addressCountry": "IT"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.42897,
+    "longitude": 9.17517
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "10:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "15:00"
+    }
+  ]
+}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -193,11 +233,11 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
     <h2 id="diconoT" class="capitolo__titolo" data-i18n="d.titolo">I biglietti dei clienti</h2>
     <p class="voto voto--centro"><b class="voto__n">4,9</b> <span class="stelle" aria-hidden="true" style="--voto:.98"></span> <span class="voto__su" data-i18n="d.voto">su Google, 100 recensioni</span></p>
     <ul class="biglietti">
-      <li class="nota reveal" style="--r:-1.5deg"><span class="calamita calamita--verde" aria-hidden="true"></span><p class="nota__testo">«Sono circa 30 anni che io e i miei genitori portiamo i nostri gatti in questo studio veterinario. Ci siamo sempre trovati benissimo con tutti i professionisti che hanno visitato i nostri gatti. Hanno un'attenzione e una professionalità fantastica.»</p><p class="nota__chi"><b>Laura Saura</b> <span data-i18n="d.m11">Google, 11 mesi fa</span></p></li>
-      <li class="nota reveal" style="--r:.5deg"><span class="calamita calamita--ocra" aria-hidden="true"></span><p class="nota__testo">«Conosciamo la dr. ssa Paola Pisani da 31 anni, da quando nel 1990 è stata la veterinaria […] della nostra prima gatta. […]»</p><p class="nota__chi"><b>annaleda Gazzi</b> <span data-i18n="d.a5">Google, 5 anni fa</span></p></li>
-      <li class="nota reveal" style="--r:1deg"><span class="calamita calamita--cotto" aria-hidden="true"></span><p class="nota__testo">«Preparata e disponibile. Ama gli animali: si vede da come li accoglie e come li coccola mentre li visita»</p><p class="nota__chi"><b>Raffaella Gatti</b> <span data-i18n="d.a8">Google, 8 anni fa</span></p></li>
-      <li class="nota reveal" style="--r:-.5deg"><span class="calamita calamita--azzurro" aria-hidden="true"></span><p class="nota__testo">«Oggi ho portato la mia cagnolona (adottata 8 giorni fa' dal canile)per la prima volta dalla dottoressa Pisani. La cagnolona era spaventata. […]»</p><p class="nota__chi"><b>Cinzia Pasi</b> <span data-i18n="d.a3">Google, 3 anni fa</span></p></li>
-      <li class="nota reveal" style="--r:1.5deg"><span class="calamita calamita--verde" aria-hidden="true"></span><p class="nota__testo">«Esperta veterinaria. Sicuramente la sua priorità è la cura degli animali senza risparmiare di bacchettare i padroni quando serve. 😅»</p><p class="nota__chi"><b>Italo Daniele Barni</b> <span data-i18n="d.a3">Google, 3 anni fa</span></p></li>
+      <li class="nota reveal" style="--r:-1.5deg"><span class="calamita calamita--verde" aria-hidden="true"></span><p lang="it" class="nota__testo">«Sono circa 30 anni che io e i miei genitori portiamo i nostri gatti in questo studio veterinario. Ci siamo sempre trovati benissimo con tutti i professionisti che hanno visitato i nostri gatti. Hanno un'attenzione e una professionalità fantastica.»</p><p class="nota__chi"><b>Laura Saura</b> <span data-i18n="d.m11">Google, 11 mesi fa</span></p></li>
+      <li class="nota reveal" style="--r:.5deg"><span class="calamita calamita--ocra" aria-hidden="true"></span><p lang="it" class="nota__testo">«Conosciamo la dr. ssa Paola Pisani da 31 anni, da quando nel 1990 è stata la veterinaria […] della nostra prima gatta. […]»</p><p class="nota__chi"><b>annaleda Gazzi</b> <span data-i18n="d.a5">Google, 5 anni fa</span></p></li>
+      <li class="nota reveal" style="--r:1deg"><span class="calamita calamita--cotto" aria-hidden="true"></span><p lang="it" class="nota__testo">«Preparata e disponibile. Ama gli animali: si vede da come li accoglie e come li coccola mentre li visita»</p><p class="nota__chi"><b>Raffaella Gatti</b> <span data-i18n="d.a8">Google, 8 anni fa</span></p></li>
+      <li class="nota reveal" style="--r:-.5deg"><span class="calamita calamita--azzurro" aria-hidden="true"></span><p lang="it" class="nota__testo">«Oggi ho portato la mia cagnolona (adottata 8 giorni fa' dal canile)per la prima volta dalla dottoressa Pisani. La cagnolona era spaventata. […]»</p><p class="nota__chi"><b>Cinzia Pasi</b> <span data-i18n="d.a3">Google, 3 anni fa</span></p></li>
+      <li class="nota reveal" style="--r:1.5deg"><span class="calamita calamita--verde" aria-hidden="true"></span><p lang="it" class="nota__testo">«Esperta veterinaria. Sicuramente la sua priorità è la cura degli animali senza risparmiare di bacchettare i padroni quando serve. 😅»</p><p class="nota__chi"><b>Italo Daniele Barni</b> <span data-i18n="d.a3">Google, 3 anni fa</span></p></li>
       <li class="nota nota--link reveal" style="--r:-1deg"><span class="calamita calamita--cotto" aria-hidden="true"></span><p class="nota__pennarello" data-i18n="d.altre">Le altre sono su Google: cento recensioni, con una media di 4,9.</p><p class="nota__vai"><a href="https://www.google.com/maps/search/?api=1&amp;query=Pisani+Dr.+Paola%2C+Via+Santa+Teresa+10%2FC%2C+Milano" target="_blank" rel="noopener" data-i18n="d.tutte">Tutte le recensioni su Google</a></p></li>
     </ul>
     <p class="dicono__nota" data-i18n="d.nota">Dalle recensioni su Google, come sono state scritte; i tagli sono segnati […]. Il biglietto sulla lavagna, in cima alla pagina, è di un'altra cliente.</p>
@@ -232,7 +272,7 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
         <p data-i18n="o.dove">Via Santa Teresa 10/C, 20142 Milano, fra Piazza Abbiategrasso e Via Boifava. La <b>M2 Abbiategrasso</b> è a 200 metri; le fermate dei tram e dei bus di <b>Piazza Abbiategrasso</b> a meno di 250.</p>
         <p class="civico" data-i18n="o.civico">Il civico è il <b>10/C</b> (in qualche elenco online c'è scritto 20/42 o 42: è il CAP).</p>
         <div class="mappa reveal">
-          <iframe title="Mappa: ambulatorio veterinario Pisani, Via Santa Teresa 10/C, Milano" data-i18n-title="o.mappa" src="https://maps.google.com/maps?q=Pisani%20Dr.%20Paola%2C%20Via%20Santa%20Teresa%2010%2FC%2C%20Milano&amp;z=16&amp;output=embed" width="600" height="360" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <div class="mappa-clic" data-mappa-clic style="--mappa-h: 360px"><template><iframe title="Mappa: ambulatorio veterinario Pisani, Via Santa Teresa 10/C, Milano" data-i18n-title="o.mappa" src="https://maps.google.com/maps?q=Pisani%20Dr.%20Paola%2C%20Via%20Santa%20Teresa%2010%2FC%2C%20Milano&amp;z=16&amp;output=embed" width="600" height="360" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></template><div class="mappa-clic__velo"><a class="mappa-clic__btn" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pisani+Dr.+Paola%2C+Via+Santa+Teresa+10%2FC%2C+Milano" target="_blank" rel="noopener">Mostra la mappa</a><p class="mappa-clic__nota">La mappa è di Google: aprendola, Google riceve il tuo indirizzo IP e può usare i suoi cookie.</p></div></div>
         </div>
         <p class="orari__azioni"><a class="bottone" href="https://www.google.com/maps/dir/?api=1&amp;destination=Pisani+Dr.+Paola%2C+Via+Santa+Teresa+10%2FC%2C+Milano" target="_blank" rel="noopener" data-i18n="h.indicazioni">Indicazioni</a></p>
       </div>
@@ -259,7 +299,7 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
     <p class="piede__nome">Dott.ssa Paola Pisani</p>
     <p class="piede__sotto" data-i18n="z.sotto">Medico veterinario · Via Santa Teresa 10/C, Milano</p>
     <p class="piede__dove"><a href="tel:+39028467102" class="intero">02 846 7102</a> · <span data-i18n="z.orario">lunedì–venerdì 10–19, sabato 10–15</span></p>
-    <p class="piede__cred" data-i18n="z.cred">Sito dimostrativo realizzato da <a href="https://bespokestud.io" rel="noopener">Bespoke Studio</a> · le foto sono dei clienti, dalla scheda Google (i marchi nelle foto della sala d'attesa sono sfocati); orari e recensioni da Google (settembre 2026). La lavagna in apertura l'abbiamo ricostruita noi, con le loro foto.</p>
+    <p class="piede__cred" data-i18n="z.cred">Sito dimostrativo realizzato da <a href="https://bespokestud.io" rel="noopener">Bespoke Studio</a> · <a href="privacy.html">Privacy</a> · le foto sono dei clienti, dalla scheda Google (i marchi nelle foto della sala d'attesa sono sfocati); orari e recensioni da Google (settembre 2026). La lavagna in apertura l'abbiamo ricostruita noi, con le loro foto.</p>
     <p><a class="piede__su" href="#inizio" data-i18n="z.su">Torna su ↑</a></p>
   </div>
 </footer>
@@ -274,5 +314,6 @@ try{if(!matchMedia('(prefers-reduced-motion: reduce)').matches){r.classList.add(
   <img id="lightboxImg" src="" alt="">
 </div>
 
+<script src="js/mappa-clic.js?v=1" defer></script>
 </body>
 </html>
